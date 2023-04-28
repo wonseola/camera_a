@@ -12,15 +12,12 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 face_cascade = cv2.CascadeClassifier('haarcascades/haarcascade_frontalface_default.xml') # 얼굴 인식용 분류기 로드
 
-servo_position = 0 # 서보모터 시작 위치
-servo_range = 90 # 서보모터 움직임 범위
-
 while True:
     ret, frame = cap.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.3, minNeighbors=5)
+
     # 인식된 얼굴이 있으면
-    
     if len(faces) > 0:
         arduino.write(b'H') # 아두이노에 H 전송
         time.sleep(0.1) # 시간 지연
@@ -28,11 +25,6 @@ while True:
             cv2.rectangle(frame,(x,y),(x+w,y+h),(0,255,0),2)
             # 얼굴 중심 계산
             center_x = x + w//2
-            # 서보모터 움직임 계산
-            angle = int(np.interp(center_x, [0, 640], [servo_position - servo_range, servo_position + servo_range]))
-            # 아두이노에 움직임 값 전송
-            arduino.write(str(angle).encode())
-            arduino.write(b'\n')
             time.sleep(0.1) # 시간 지연
     else:
         arduino.write(b'L') # 아두이노에 L 전송
