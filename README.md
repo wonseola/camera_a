@@ -20,3 +20,10 @@ vscode (python, opencv, yolov5)
 <h3> 작업시간 </h3>
 
 <h3> 사진 (혹은 데모 동영상링크) <h3>
+  
+<img src = "https://i.imgur.com/hapKyj1.jpg" width = 400><br> 
+  <h6>얼굴 인식 <br>
+  <br>
+<img src = "https://i.imgur.com/qf8SPJZ.gif"> <br>
+ 동작</h6><br>
+  <br>
