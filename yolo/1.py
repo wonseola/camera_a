@@ -31,7 +31,7 @@ while True:
             person_detected = True  # 사람이 감지되었음을 플래그로 표시
 
     cv2.imshow('YOLOv5', frame)
-
+ 
     # 사람이 감지되었을 때
     if person_detected:
         ser.write(b'H')
